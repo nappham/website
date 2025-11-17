@@ -2,43 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>About Me – nappham</title>
+  <title>nappham</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      background: #000;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    img {
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-
-  <nav>
-    <div class="logo">nappham</div>
-    <div class="links">
-      <a href="index.html">About Me</a>
-      <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
-    </div>
-  </nav>
-
-  <section class="about">
-    <div class="about-text">
-      <h1>About Me</h1>
-      <p>
-        Hello, my name is Nathan, sometimes Phong, very rarely Nathaniel.
-      </p>
-      <p>
-        Currently am leading two teams competing at the SUAS and MATE ROV competition
-        for 2026. If you're interesting in helping please reach out :D
-      </p>
-      <p>
-        Also am an HSL undergrad researcher looking towards FPGA/ASCI applications
-        towards computer vision processing (ai slop).
-      </p>
-    </div>
-
-    <div class="about-photo">
-      <!-- change this path/filename if your image is elsewhere -->
-      <img src="img/me.jpg" alt="Photo of Nathan Pham" />
-    </div>
-  </section>
-
+  <img src="resume.png" alt="resume" />
 </body>
 </html>
 
