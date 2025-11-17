@@ -64,3 +64,28 @@ p {
   margin-bottom: 20px;
 }
 
+/* About section layout */
+.about {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin-top: 20px;
+}
+
+/* Photo styling */
+.about-photo img {
+  width: 180px;            /* size of the image */
+  height: 180px;
+  border-radius: 50%;      /* makes it a circle */
+  object-fit: cover;
+  box-shadow: 0 0 30px rgba(80, 120, 255, 0.4);
+}
+
+/* Text area */
+.about-text h1 {
+  margin-bottom: 12px;
+}
+
+.about-text p {
+  margin-bottom: 10px;
+}
