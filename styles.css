@@ -17,12 +17,9 @@ body {
   padding: 20px;
 }
 
-/* Limit content width a bit so it doesn't stretch too wide */
+/* keep content from stretching too wide */
 body > nav,
-body > section,
-body > h1,
-body > p,
-body > div {
+body > section {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -73,25 +70,27 @@ p {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 24px;
-  margin-top: 24px;
+  gap: 40px;
+  margin-top: 32px;
 }
 
-/* Text on the left */
+/* text column – make it narrower so it wraps earlier */
 .about-text {
-  flex: 1.5;
+  flex: 1;
+  max-width: 560px;   /* controls how far to the right the text goes */
 }
 
-/* Image on the right */
+/* image column */
 .about-photo {
   flex: 0 0 auto;
 }
 
-/* Smaller, circular photo on the right */
+/* bigger, non-circle image */
 .about-photo img {
-  width: 130px;          /* smaller size */
-  height: 130px;
-  border-radius: 50%;    /* circle */
+  width: 260px;        /* increase/decrease this to taste */
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px; /* rounded rectangle, not a circle */
   object-fit: cover;
   box-shadow: 0 0 24px rgba(80, 120, 255, 0.4);
 }
@@ -99,13 +98,13 @@ p {
 /* ========== Responsive (mobile) ========== */
 @media (max-width: 700px) {
   .about {
-    flex-direction: column-reverse; /* text above, image below on small screens */
+    flex-direction: column-reverse;
     align-items: center;
-    text-align: center;
+    text-align: left;
   }
 
   .about-text {
-    width: 100%;
+    max-width: 100%;
   }
 
   .about-photo {
