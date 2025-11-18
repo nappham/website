@@ -124,115 +124,18 @@ p {
 /* ========== Blog Page ========== */
 .blog {
   margin-top: 32px;
+  max-width: 720px;      /* narrower text block */
+  margin-left: auto;
+  margin-right: auto;    /* center inside container */
 }
 
-/* list of clickable blog titles */
-.blog-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
+.blog ol {
+  margin-left: 24px;
+  margin-top: 8px;
 }
 
-.blog-item-button {
-  width: 100%;
-  text-align: left;
-  border: 1px solid rgba(80, 120, 255, 0.35);
-  background: #090b12;
-  padding: 14px 16px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-}
-
-.blog-item-button:hover {
-  background: #111422;
-  box-shadow: 0 0 16px rgba(80, 120, 255, 0.35);
-  transform: translateY(-1px);
-}
-
-.blog-item-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #f0f4ff;
-}
-
-.blog-item-meta {
-  font-size: 0.85rem;
-  color: #9aa3d1;
-}
-
-/* hide the full post templates on the page itself */
-.blog-post-template {
-  display: none;
-}
-
-/* ========== Blog Post Overlay (full screen) ========== */
-
-.blog-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(3, 5, 10, 0.96);
-  display: none;                 /* hidden by default */
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 16px;
-  overflow-y: auto;
-  z-index: 9999;
-}
-
-.blog-overlay.active {
-  display: flex;
-}
-
-.blog-overlay-inner {
-  max-width: 800px;
-  width: 100%;
-  background: #05060a;
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(80, 120, 255, 0.6);
-  padding: 24px 20px 28px;
-}
-
-/* header inside overlay */
-.blog-overlay-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.blog-overlay-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.blog-overlay-meta {
-  font-size: 0.85rem;
-  color: #9aa3d1;
-}
-
-/* close button */
-.blog-overlay-close {
-  border: none;
-  background: transparent;
-  color: #cfd8ff;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 999px;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.blog-overlay-close:hover {
-  background: rgba(80, 120, 255, 0.2);
-  color: #ffffff;
-}
-
-/* content body */
-.blog-overlay-content p {
-  margin-bottom: 14px;
+.blog li {
+  margin-bottom: 8px;
 }
 
 /* ========== Responsive (mobile) ========== */
@@ -269,8 +172,8 @@ p {
     width: 140px;
   }
 
-  .blog-overlay-inner {
-    padding: 18px 16px 24px;
+  .blog {
+    max-width: 100%;
   }
 }
 
