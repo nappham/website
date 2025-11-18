@@ -9,6 +9,7 @@
 <body>
 
   <div class="container">
+    <!-- ========== NAVBAR ========== -->
     <nav>
       <div class="logo">nappham</div>
       <div class="links">
@@ -18,13 +19,13 @@
       </div>
     </nav>
 
-    <!-- Language switcher -->
+    <!-- ========== LANGUAGE SWITCHER ========== -->
     <div class="lang-switch">
       <button class="lang-btn active" data-lang-btn="en">EN</button>
       <button class="lang-btn" data-lang-btn="fr">FR</button>
     </div>
 
-    <!-- ===== English version ===== -->
+    <!-- ========== ABOUT (ENGLISH) ========== -->
     <section class="about" data-lang-section="en">
       <div class="about-text">
         <h1>About Me</h1>
@@ -37,11 +38,11 @@
           baking and driving.
         </p>
         <p>
-          Inside of school you'll probably find me at BE-49 doing slugbotics stuff or Jack's Lounge
+          Inside of school you'll probably find me at be-49 doing slugbotics stuff or jacks lounge
           doing school stuff<br>
           fall 25: cse 225, cse 121<br>
-          winter 26: CSE 222A, CSE 127A, CSE 185E<br>
-          spring 26: ECE 222B, CSE 127B, ECE 103/L
+          winter 26: cse 222A, cse 127A, cse 185E<br>
+          spring 26: cse 222B, cse 127B, ece 103/L
         </p>
         <p>
           Outside of school you'll never find me because I am never outside of school.
@@ -53,7 +54,8 @@
       </div>
     </section>
 
-    <!-- ===== French version ===== -->
+    <!-- ========== ABOUT (FRENCH) ========== -->
+    <!-- NOTE: `hidden` here is IMPORTANT so FR is not shown by default -->
     <section class="about" data-lang-section="fr" hidden>
       <div class="about-text">
         <h1>À propos de moi</h1>
@@ -61,9 +63,9 @@
           Bonjour, je m'appelle Nathan, mais certaines personnes m’appellent Phong, et très rarement Nathaniel.
         </p>
         <p>
-          Je suis actuellement en troisième année de CE à l’UCSC. Je m’intéresse à 
-          (chip design) et aux systèmes robotiques. J’aime aussi l’escalade, la
-          natation, faire des vêtements, jouer à HOI4, faire de la pâtisserie et conduire.
+          Je suis actuellement en troisième année de Computer Engineering à l’UCSC. Je m’intéresse à la
+          conception de puces (chip design) et aux systèmes robotiques. J’aime aussi l’escalade, la natation,
+          faire des vêtements, jouer à HOI4, faire de la pâtisserie et conduire.
         </p>
         <p>
           À la fac, vous me trouverez probablement à BE-49 en train de faire des trucs Slugbotics
@@ -83,6 +85,7 @@
     </section>
   </div>
 
+  <!-- ========== LANGUAGE TOGGLE SCRIPT ========== -->
   <script>
     const langButtons = document.querySelectorAll("[data-lang-btn]");
     const langSections = document.querySelectorAll("[data-lang-section]");
