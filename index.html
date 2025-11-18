@@ -129,34 +129,50 @@
     });
 
     // ---- lock overlay (no persistence) ----
-    const SECRET_CODE = "lamp";
+<script>
+  const SECRET_CODE = "slop2025";               // same code on every page
+  const ACCESS_KEY = "nappham-session-access";  // session flag name
 
-    const overlay = document.getElementById("lock-overlay");
-    const lockInput = document.getElementById("lock-code");
-    const lockButton = document.getElementById("lock-submit");
-    const lockError = document.getElementById("lock-error");
+  const overlay = document.getElementById("lock-overlay");
+  const lockInput = document.getElementById("lock-code");
+  const lockButton = document.getElementById("lock-submit");
+  const lockError = document.getElementById("lock-error");
 
-    function tryUnlock() {
-      const value = lockInput.value.trim();
-      if (!value) {
-        lockError.textContent = "please enter the code.";
-        return;
-      }
-      if (value === SECRET_CODE) {
-        overlay.style.display = "none"; // just hide overlay for this page load
-      } else {
-        lockError.textContent = "wrong code.";
-        lockInput.value = "";
-        lockInput.focus();
-      }
+  function unlock() {
+    overlay.style.display = "none";
+    // remember access ONLY for this browser tab/session
+    sessionStorage.setItem(ACCESS_KEY, "granted");
+  }
+
+  function tryUnlock() {
+    const value = lockInput.value.trim();
+    if (!value) {
+      lockError.textContent = "please enter the code.";
+      return;
     }
+    if (value === SECRET_CODE) {
+      unlock();
+    } else {
+      lockError.textContent = "wrong code.";
+      lockInput.value = "";
+      lockInput.focus();
+    }
+  }
 
+  // If already unlocked in this session, hide overlay immediately
+  if (sessionStorage.getItem(ACCESS_KEY) === "granted") {
+    overlay.style.display = "none";
+  } else {
+    // otherwise, wire up the events
     lockButton.addEventListener("click", tryUnlock);
     lockInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
         tryUnlock();
       }
     });
+  }
+</script>
+
   </script>
 </body>
 </html>
