@@ -126,6 +126,131 @@
     </main>
   </div>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog – nappham</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <nav>
+      <div class="logo">nappham</div>
+      <div class="links">
+        <a href="index.html">About Me</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+      </div>
+    </nav>
+
+    <main class="blog">
+      <h1>Blog</h1>
+
+      <!-- Single blog post as a collapsible tab -->
+      <details class="blog-entry">
+        <summary>
+          <div class="blog-entry-header">
+            <span class="blog-entry-title">Why did I make a website</span>
+            <span class="blog-entry-date">Nov 17, ’25</span>
+          </div>
+        </summary>
+
+        <div class="blog-entry-body">
+          <p>
+            Good question! Although I want to put actual effort, this is essentially just website slop
+            that I paid 10 dollars for. I guess my biggest reason is to have a portfolio outside of
+            linkedin where I can customize the experience better and mostly have bragging rights.
+            To be honest, I don't have a clear vision for this website mostly because building out
+            this website will take a lot of work and I'm already really busy with grad apps,
+            club/research work as well as just life in general. Hopefully I can make it so that this
+            website has a 1/1000 chance every second to randomly jumpscare the viewer. Expect random
+            overhauls to this website at random nights as I play around with different features and
+            hopefully create something comprehensible.
+          </p>
+
+          <p>stuff I need to do for this website:</p>
+
+          <ol>
+            <li>center this fucking page properly (only about me is properly sized)</li>
+            <li>port this to mobile (again only about me works so far)</li>
+            <li>upload my resume and all my projects</li>
+            <li>create live github commit timeline/display in about me linked to this website's repo</li>
+            <li>uffdasfasfafdflk;lkjfdsalkjlkjfdsal;kjfdsafjlkaf</li>
+            <li>actually push this website (eta 2026 feb?)</li>
+          </ol>
+        </div>
+      </details>
+
+      <!-- you can add more <details class="blog-entry"> blocks here for future posts -->
+    </main>
+  </div>
+
+  <!-- ========== LOCK OVERLAY ========== -->
+  <div class="lock-overlay" id="lock-overlay">
+    <div class="lock-card">
+      <h1>enter access code</h1>
+      <p>this site is only for people i send the code to :)</p>
+
+      <input
+        type="password"
+        id="lock-code"
+        class="lock-input"
+        placeholder="enter code"
+        autocomplete="off"
+      />
+      <button class="lock-button" id="lock-submit">let me in</button>
+      <div class="lock-error" id="lock-error"></div>
+
+      <div class="lock-hint">
+        hint: think of the sloppiest year of my life.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SECRET_CODE = "slop2025";               // same code as index/projects
+    const ACCESS_KEY = "nappham-session-access";  // same session key
+
+    const overlay = document.getElementById("lock-overlay");
+    const lockInput = document.getElementById("lock-code");
+    const lockButton = document.getElementById("lock-submit");
+    const lockError = document.getElementById("lock-error");
+
+    function unlock() {
+      overlay.style.display = "none";
+      sessionStorage.setItem(ACCESS_KEY, "granted");
+    }
+
+    function tryUnlock() {
+      const value = lockInput.value.trim();
+      if (!value) {
+        lockError.textContent = "please enter the code.";
+        return;
+      }
+      if (value === SECRET_CODE) {
+        unlock();
+      } else {
+        lockError.textContent = "wrong code.";
+        lockInput.value = "";
+        lockInput.focus();
+      }
+    }
+
+    if (sessionStorage.getItem(ACCESS_KEY) === "granted") {
+      overlay.style.display = "none";
+    } else {
+      lockButton.addEventListener("click", tryUnlock);
+      lockInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          tryUnlock();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
+
  

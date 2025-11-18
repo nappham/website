@@ -46,9 +46,8 @@
           <p>stuff I need to do for this website:</p>
 
           <ol>
-            <li>center this fucking page properly (done)</li>
-            <li>port this to mobile (done) </li>
-	    <li>add french/vietnamese verison to website </li>
+            <li>center this fucking page properly (only about me is properly sized)</li>
+            <li>port this to mobile (again only about me works so far)</li>
             <li>upload my resume and all my projects</li>
             <li>create live github commit timeline/display in about me linked to this website's repo</li>
             <li>uffdasfasfafdflk;lkjfdsalkjlkjfdsal;kjfdsafjlkaf</li>
@@ -57,9 +56,72 @@
         </div>
       </details>
 
+      <!-- you can add more <details class="blog-entry"> blocks here for future posts -->
     </main>
   </div>
 
+  <!-- ========== LOCK OVERLAY ========== -->
+  <div class="lock-overlay" id="lock-overlay">
+    <div class="lock-card">
+      <h1>enter access code</h1>
+      <p>this site is only for people i send the code to :)</p>
+
+      <input
+        type="password"
+        id="lock-code"
+        class="lock-input"
+        placeholder="enter code"
+        autocomplete="off"
+      />
+      <button class="lock-button" id="lock-submit">let me in</button>
+      <div class="lock-error" id="lock-error"></div>
+
+      <div class="lock-hint">
+        hint: think of the sloppiest year of my life.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SECRET_CODE = "slop2025";               // same code as index/projects
+    const ACCESS_KEY = "nappham-session-access";  // same session key
+
+    const overlay = document.getElementById("lock-overlay");
+    const lockInput = document.getElementById("lock-code");
+    const lockButton = document.getElementById("lock-submit");
+    const lockError = document.getElementById("lock-error");
+
+    function unlock() {
+      overlay.style.display = "none";
+      sessionStorage.setItem(ACCESS_KEY, "granted");
+    }
+
+    function tryUnlock() {
+      const value = lockInput.value.trim();
+      if (!value) {
+        lockError.textContent = "please enter the code.";
+        return;
+      }
+      if (value === SECRET_CODE) {
+        unlock();
+      } else {
+        lockError.textContent = "wrong code.";
+        lockInput.value = "";
+        lockInput.focus();
+      }
+    }
+
+    if (sessionStorage.getItem(ACCESS_KEY) === "granted") {
+      overlay.style.display = "none";
+    } else {
+      lockButton.addEventListener("click", tryUnlock);
+      lockInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          tryUnlock();
+        }
+      });
+    }
+  </script>
 </body>
 </html>
 

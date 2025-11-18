@@ -84,11 +84,11 @@
     </section>
   </div>
 
-  <!-- ========== LOCK OVERLAY (CODE SCREEN) ========== -->
+  <!-- ========== LOCK OVERLAY ========== -->
   <div class="lock-overlay" id="lock-overlay">
     <div class="lock-card">
       <h1>enter access code</h1>
-      <p>herro</p>
+      <p>this site is only for people i send the code to :)</p>
 
       <input
         type="password"
@@ -101,8 +101,8 @@
       <div class="lock-error" id="lock-error"></div>
 
       <div class="lock-hint">
-        <!-- change this to whatever hint you want -->
-        hint: for lovers
+        <!-- change this hint to whatever you want -->
+        hint: think of the sloppiest year of my life.
       </div>
     </div>
   </div>
@@ -128,50 +128,45 @@
       });
     });
 
-    // ---- lock overlay (no persistence) ----
-<script>
-  const SECRET_CODE = "slop2025";               // same code on every page
-  const ACCESS_KEY = "nappham-session-access";  // session flag name
+    // ---- lock overlay (session-based) ----
+    const SECRET_CODE = "slop2025";               // change this to your code
+    const ACCESS_KEY = "nappham-session-access";  // session flag
 
-  const overlay = document.getElementById("lock-overlay");
-  const lockInput = document.getElementById("lock-code");
-  const lockButton = document.getElementById("lock-submit");
-  const lockError = document.getElementById("lock-error");
+    const overlay = document.getElementById("lock-overlay");
+    const lockInput = document.getElementById("lock-code");
+    const lockButton = document.getElementById("lock-submit");
+    const lockError = document.getElementById("lock-error");
 
-  function unlock() {
-    overlay.style.display = "none";
-    // remember access ONLY for this browser tab/session
-    sessionStorage.setItem(ACCESS_KEY, "granted");
-  }
-
-  function tryUnlock() {
-    const value = lockInput.value.trim();
-    if (!value) {
-      lockError.textContent = "please enter the code.";
-      return;
+    function unlock() {
+      overlay.style.display = "none";
+      sessionStorage.setItem(ACCESS_KEY, "granted"); // only for this tab/session
     }
-    if (value === SECRET_CODE) {
-      unlock();
-    } else {
-      lockError.textContent = "wrong code.";
-      lockInput.value = "";
-      lockInput.focus();
-    }
-  }
 
-  // If already unlocked in this session, hide overlay immediately
-  if (sessionStorage.getItem(ACCESS_KEY) === "granted") {
-    overlay.style.display = "none";
-  } else {
-    // otherwise, wire up the events
-    lockButton.addEventListener("click", tryUnlock);
-    lockInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        tryUnlock();
+    function tryUnlock() {
+      const value = lockInput.value.trim();
+      if (!value) {
+        lockError.textContent = "please enter the code.";
+        return;
       }
-    });
-  }
+      if (value === SECRET_CODE) {
+        unlock();
+      } else {
+        lockError.textContent = "wrong code.";
+        lockInput.value = "";
+        lockInput.focus();
+      }
+    }
 
+    if (sessionStorage.getItem(ACCESS_KEY) === "granted") {
+      overlay.style.display = "none";
+    } else {
+      lockButton.addEventListener("click", tryUnlock);
+      lockInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          tryUnlock();
+        }
+      });
+    }
   </script>
 </body>
 </html>
