@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+/* make sure HTML hidden actually hides things */
+[hidden] {
+  display: none !important;
+}
+
 /* ========== Global ========== */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
