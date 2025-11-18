@@ -50,6 +50,36 @@ nav .links a:hover {
   opacity: 0.9;
 }
 
+/* ========== Language Toggle (EN / FR) ========== */
+.lang-switch {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.lang-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(80, 120, 255, 0.4);
+  background: #05060a;
+  color: #cfd8ff;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lang-btn.active {
+  background: #7aa2ff;
+  color: #05060a;
+  box-shadow: 0 0 12px rgba(80, 120, 255, 0.6);
+}
+
+.lang-btn:hover:not(.active) {
+  background: #111422;
+}
+
 /* ========== Typography ========== */
 h1, h2 {
   color: #ffffff;
@@ -72,7 +102,7 @@ p {
 
 .about-text {
   flex: 1;
-  max-width: 560px;      /* keeps same column width as projects text */
+  max-width: 560px;      /* same column width as projects text */
 }
 
 .about-photo {
@@ -103,7 +133,7 @@ p {
 
 .project-text {
   flex: 1;
-  max-width: 560px;      /* matches about-text width */
+  max-width: 560px;
 }
 
 /* right-side logo/image */
@@ -121,15 +151,15 @@ p {
   box-shadow: 0 0 26px rgba(80, 120, 255, 0.45);
 }
 
-/* ========== Blog Page ========== */
+/* ========== Blog Page (collapsible tabs) ========== */
 .blog {
   margin-top: 32px;
   max-width: 720px;      /* narrower text block */
   margin-left: auto;
-  margin-right: auto;    /* center inside container */
+  margin-right: auto;
 }
 
-/* accordion-style blog entry */
+/* single blog entry as an accordion */
 .blog-entry {
   margin-top: 24px;
   background: #090b12;
@@ -139,7 +169,7 @@ p {
   overflow: hidden;
 }
 
-/* remove default triangle marker */
+/* hide default marker */
 .blog-entry summary {
   list-style: none;
 }
@@ -170,23 +200,17 @@ p {
   color: #9aa3d1;
 }
 
-/* body shown when open */
+/* body of blog post */
 .blog-entry-body {
   padding: 0 16px 16px;
   border-top: 1px solid rgba(80, 120, 255, 0.35);
   margin-top: 4px;
 }
 
-/* subtle hover + open feedback */
-.blog-entry:not([open]) .blog-entry-header:hover {
-  background: #111422;
+.blog-entry-body p {
+  margin-bottom: 14px;
 }
 
-.blog-entry[open] .blog-entry-header {
-  background: #111422;
-}
-
-/* list inside blog post */
 .blog-entry-body ol {
   margin-left: 24px;
   margin-top: 8px;
@@ -196,33 +220,12 @@ p {
   margin-bottom: 8px;
 }
 
-/* language toggle */
-.lang-switch {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-top: 12px;
-  margin-bottom: 4px;
+/* hover / open states */
+.blog-entry:not([open]) .blog-entry-header:hover {
+  background: #111422;
 }
 
-.lang-btn {
-  border-radius: 999px;
-  border: 1px solid rgba(80, 120, 255, 0.4);
-  background: #05060a;
-  color: #cfd8ff;
-  padding: 4px 10px;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.lang-btn.active {
-  background: #7aa2ff;
-  color: #05060a;
-  box-shadow: 0 0 12px rgba(80, 120, 255, 0.6);
-}
-
-.lang-btn:hover:not(.active) {
+.blog-entry[open] .blog-entry-header {
   background: #111422;
 }
 
