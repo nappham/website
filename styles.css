@@ -9,20 +9,15 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
-
-  /* Deep black with a slight blue tint */
-  background: #05060a;
+  background: #05060a;   /* deep black with hint of blue */
   color: #f0f4ff;
-
   padding: 20px;
 }
 
-/* keep content from stretching too wide */
-body > nav,
-body > section {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+/* shared centered layout */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 /* ========== Navbar ========== */
@@ -65,7 +60,7 @@ p {
   margin-bottom: 16px;
 }
 
-/* ========== About Section ========== */
+/* ========== About Section (your screenshot) ========== */
 .about {
   display: flex;
   align-items: flex-start;
@@ -74,41 +69,85 @@ p {
   margin-top: 32px;
 }
 
-/* text column – make it narrower so it wraps earlier */
 .about-text {
   flex: 1;
-  max-width: 560px;   /* controls how far to the right the text goes */
+  max-width: 560px;
 }
 
-/* image column */
 .about-photo {
   flex: 0 0 auto;
 }
 
-/* bigger, non-circle image */
 .about-photo img {
-  width: 260px;        /* increase/decrease this to taste */
+  width: 280px;
   max-width: 100%;
   height: auto;
-  border-radius: 16px; /* rounded rectangle, not a circle */
+  border-radius: 20px;
   object-fit: cover;
-  box-shadow: 0 0 24px rgba(80, 120, 255, 0.4);
+  box-shadow: 0 0 32px rgba(80, 120, 255, 0.5);
+}
+
+/* ========== Projects Page (match About layout) ========== */
+
+.projects {
+  margin-top: 32px;
+}
+
+/* each project uses the same kind of two-column layout */
+.project-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.project-text {
+  flex: 1;
+  max-width: 560px;   /* keeps text in the same width as About text */
+}
+
+/* right-side logo/image */
+.project-logo {
+  flex: 0 0 auto;
+}
+
+.project-logo img {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: contain;
+  background: #090b12;
+  padding: 10px;
+  box-shadow: 0 0 26px rgba(80, 120, 255, 0.45);
+}
+
+/* ========== Blog Page ========== */
+.blog {
+  margin-top: 32px;
 }
 
 /* ========== Responsive (mobile) ========== */
 @media (max-width: 700px) {
-  .about {
+  .about,
+  .project-item {
     flex-direction: column-reverse;
     align-items: center;
-    text-align: left;
   }
 
-  .about-text {
+  .about-text,
+  .project-text {
     max-width: 100%;
   }
 
-  .about-photo {
+  .about-photo,
+  .project-logo {
     margin-bottom: 12px;
+  }
+
+  .project-logo img {
+    width: 140px;
   }
 }
 
