@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>About Me – nappham</title>
@@ -18,20 +18,28 @@
       </div>
     </nav>
 
-    <section class="about">
+    <!-- Language switcher -->
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang-btn="en">EN</button>
+      <button class="lang-btn" data-lang-btn="fr">FR</button>
+    </div>
+
+    <!-- ===== English version ===== -->
+    <section class="about" data-lang-section="en">
       <div class="about-text">
         <h1>About Me</h1>
         <p>
           Hello, my name is Nathan, though people sometimes call me Phong, very rarely Nathaniel.
         </p>
         <p>
-          I am a third year CE student at UCSC interested in chip design and building robotic
-          systems. I also enjoy swimming, making clothes, playing HOI4, and baking.
+          Currently am a third year CE student at UCSC interested in chip design and building
+          robotic systems. I also enjoy rock climbing, swimming, making clothes, playing HOI4,
+          baking and driving.
         </p>
         <p>
-          Inside of school you'll probably find me at be-49 doing slugbotics stuff or jacks lounge doing
-          school stuff<br>
-          fall 25:   cse 225, cse 121<br>
+          Inside of school you'll probably find me at be-49 doing slugbotics stuff or jacks lounge
+          doing school stuff<br>
+          fall 25: cse 225, cse 121<br>
           winter 26: cse 222A, cse 127A, cse 185E<br>
           spring 26: cse 222B, cse 127B, ece 103/L
         </p>
@@ -44,8 +52,58 @@
         <img src="img/me.jpg" alt="Photo of Nathan Pham" />
       </div>
     </section>
+
+    <!-- ===== French version ===== -->
+    <section class="about" data-lang-section="fr" hidden>
+      <div class="about-text">
+        <h1>À propos de moi</h1>
+        <p>
+          Bonjour, je m'appelle Nathan, mais certaines personnes m’appellent Phong, et très rarement Nathaniel.
+        </p>
+        <p>
+          Je suis actuellement en troisième année de Computer Engineering à l’UCSC. Je m’intéresse à la
+          conception de puces (chip design) et aux systèmes robotiques. J’aime aussi l’escalade, la
+          natation, faire des vêtements, jouer à HOI4, faire de la pâtisserie et conduire.
+        </p>
+        <p>
+          À la fac, vous me trouverez probablement à BE-49 en train de faire des trucs Slugbotics
+          ou au Jack’s Lounge en train de travailler sur des cours.<br>
+          automne 25 : CSE 225, CSE 121<br>
+          hiver 26 : CSE 222A, CSE 127A, CSE 185E<br>
+          printemps 26 : CSE 222B, CSE 127B, ECE 103/L
+        </p>
+        <p>
+          En dehors de l’école vous ne me verrez jamais, parce que je ne suis jamais en dehors de l’école.
+        </p>
+      </div>
+
+      <div class="about-photo">
+        <img src="img/me.jpg" alt="Photo de Nathan Pham" />
+      </div>
+    </section>
   </div>
 
+  <script>
+    const langButtons = document.querySelectorAll("[data-lang-btn]");
+    const langSections = document.querySelectorAll("[data-lang-section]");
+
+    langButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const lang = button.getAttribute("data-lang-btn");
+
+        // toggle button active state
+        langButtons.forEach(btn => {
+          btn.classList.toggle("active", btn === button);
+        });
+
+        // show/hide sections
+        langSections.forEach(section => {
+          const sectionLang = section.getAttribute("data-lang-section");
+          section.hidden = sectionLang !== lang;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
 
