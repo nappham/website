@@ -105,16 +105,16 @@ p {
   margin-top: 32px;
 }
 
-/* left side: a vertical stack of cards */
+/* left side = stack of cards */
 .about-main {
   flex: 1;
   max-width: 560px;
   display: flex;
   flex-direction: column;
-  gap: 20px;  /* space between cards */
+  gap: 20px;
 }
 
-/* individual card (About Me, Class Schedule, etc.) */
+/* reusable card style */
 .about-card {
   background: #090b12;
   border-radius: 16px;
@@ -122,6 +122,7 @@ p {
   box-shadow: 0 0 18px rgba(80, 120, 255, 0.25);
   padding: 18px 20px 20px;
 }
+
 
 .about-photo {
   flex: 0 0 280px;       /* fixed column for your photo */
