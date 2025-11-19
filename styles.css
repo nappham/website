@@ -107,9 +107,14 @@ p {
 
 .about-text {
   flex: 1;
-  max-width: 560px;      /* same column width as projects text */
-}
+  max-width: 560px;
 
+  background: #090b12;                               /* card background */
+  border-radius: 16px;                               /* rounded corners */
+  border: 1px solid rgba(80, 120, 255, 0.35);        /* subtle border */
+  box-shadow: 0 0 18px rgba(80, 120, 255, 0.25);     /* glow like your other cards */
+  padding: 18px 20px 20px;                           /* space inside the card */
+}
 .about-photo {
   flex: 0 0 280px;       /* fixed column for your photo */
 }
