@@ -10,34 +10,38 @@
 <body>
   <div class="container">
     <!-- NAVBAR -->
-      <nav>
-        <a href="index.html" class="logo">nappham</a>
-        <div class="links">
-          <a href="projects.html">Projects</a>
-          <a href="blog.html">Blog</a>
-          <a href="cv.html">CV</a>
-        </div>
-      </nav>
+    <nav>
+      <a href="index.html" class="logo">nappham</a>
+      <div class="links">
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
+      </div>
+    </nav>
 
     <main class="cv">
-      <h1>CV</h1>
+      <!-- top row: title + tiny download icon -->
+      <div class="cv-header">
+        <h1>CV</h1>
 
-      <!-- Resume card -->
-      <section class="about-card cv-card">
-        <h2>Resume</h2>
-        <p>You can download the full PDF version of my resume here:</p>
-        <!-- put your actual resume PDF in /files and update this name -->
-        <a href="files/Nathan_Pham_Resume.pdf" target="_blank" rel="noopener">
-          Download Resume (PDF)
+        <!-- change href to your actual resume path, and img src to your PDF icon -->
+        <a
+          href="files/Nathan_Pham_Resume.pdf"
+          class="cv-download"
+          title="Download CV (PDF)"
+          target="_blank"
+          rel="noopener"
+        >
+          <img src="img/pdf-icon.png" alt="Download CV (PDF)" />
         </a>
-      </section>
+      </div>
 
-      <!-- Basic info card -->
+      <!-- Basic info card (first block) -->
       <section class="about-card cv-card">
         <h2>Basic Info</h2>
-        <p><strong>Name</strong> Nathan Pham</p>
+        <p><strong>Name</strong><br> Nathan Pham</p>
         <p><strong>Email</strong><br> nappham@ucsc.edu</p>
-        <p><strong>Education</strong> B.S. Computer Engineering, UC Santa Cruz (2023-2026) </p>
+        <p><strong>Education</strong><br> B.S. Computer Engineering, UC Santa Cruz (2023–2026)</p>
       </section>
 
       <!-- Coursework card -->
@@ -57,17 +61,67 @@
         <h2>Highlighted Projects</h2>
         <ul>
           <li>SOMARs – SUAS Team Captain / Vision Lead</li>
-          <li>MATE ROV – Integration & Enclosure Lead</li>
+          <li>MATE ROV – Integration &amp; Enclosure Lead</li>
           <li>Hardware Systems Collective – FPGA/ASIC CV Research</li>
         </ul>
         <p>See the <a href="projects.html">Projects</a> tab for full descriptions.</p>
       </section>
 
-      <!-- Extra stuff card -->
-      <section class="about-card cv-card">
-        <h2>filler</h2>
-        <p>
+      <!-- Skills card -->
+      <section class="about-card cv-card skills-card">
+        <h2>Skills</h2>
 
+        <div class="skills-grid">
+          <!-- Column 1: Technical - Languages -->
+          <div class="skills-column">
+            <div class="skills-title">
+              <span class="skills-icon">&lt;/&gt;</span>
+              <span>Technical – Languages</span>
+            </div>
+            <ul>
+              <li>Verilog / SystemVerilog</li>
+              <li>C / C++</li>
+              <li>Python</li>
+              <li>Java</li>
+              <li>Bash</li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Technical - Infrastructure -->
+          <div class="skills-column">
+            <div class="skills-title">
+              <span class="skills-icon">🗄️</span>
+              <span>Technical – Infrastructure</span>
+            </div>
+            <ul>
+              <li>Linux</li>
+              <li>Git / GitHub</li>
+              <li>FPGA / ASIC Toolflows</li>
+              <li>Docker</li>
+              <li>AWS / Cloud basics</li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Soft -->
+          <div class="skills-column">
+            <div class="skills-title">
+              <span class="skills-icon">⬆</span>
+              <span>Soft</span>
+            </div>
+            <ul>
+              <li>Project Management</li>
+              <li>Team Leadership</li>
+              <li>Technical Mentorship</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Extra stuff card (placeholder if you want it) -->
+      <section class="about-card cv-card">
+        <h2>Other</h2>
+        <p>
+          Awards, conferences, publications, random flex — whatever else you want to list here.
         </p>
       </section>
     </main>
@@ -96,8 +150,8 @@
   </div>
 
   <script>
-    const SECRET_CODE = "password";               // same as index/projects
-    const ACCESS_KEY = "nappham-session-access";  // same session key
+    const SECRET_CODE = "password";
+    const ACCESS_KEY = "nappham-session-access";
 
     const overlay = document.getElementById("lock-overlay");
     const lockInput = document.getElementById("lock-code");

@@ -434,3 +434,43 @@ nav .logo {
   text-decoration: none;   /* add this line */
 }
 
+/* CV header row: title + icon */
+.cv-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cv-download img {
+  width: 40px;
+  height: auto;
+  display: block;
+}
+
+/* Skills layout */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 12px;
+}
+
+.skills-column {
+  min-width: 180px;
+}
+
+.skills-title {
+  font-weight: 600;
+  color: #2bb7ff;   /* teal-ish section headings */
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skills-icon {
+  font-size: 16px;
+}
+
