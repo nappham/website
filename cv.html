@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV – nappham</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="img/fumo.png" type="image/png" />
+</head>
+<body>
+  <div class="container">
+    <!-- NAVBAR -->
+    <nav>
+      <div class="logo">nappham</div>
+      <div class="links">
+        <a href="index.html">About Me</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="cv.html">CV</a>
+      </div>
+    </nav>
+
+    <main class="cv">
+      <h1>CV</h1>
+
+      <!-- Resume card -->
+      <section class="about-card cv-card">
+        <h2>Resume</h2>
+        <p>You can download the full PDF version of my resume here:</p>
+        <!-- put your actual resume PDF in /files and update this name -->
+        <a href="files/Nathan_Pham_Resume.pdf" target="_blank" rel="noopener">
+          Download Resume (PDF)
+        </a>
+      </section>
+
+      <!-- Basic info card -->
+      <section class="about-card cv-card">
+        <h2>Basic Info</h2>
+        <p><strong>Name</strong><br>Nathan Pham</p>
+        <p><strong>Email</strong><br>you@example.com</p>
+        <p><strong>Location</strong><br>Santa Cruz, CA</p>
+      </section>
+
+      <!-- Education card -->
+      <section class="about-card cv-card">
+        <h2>Education</h2>
+        <p><strong>B.S. Computer Engineering</strong><br>
+          UC Santa Cruz, 2022–2026 (expected)
+        </p>
+        <p><strong>Planned M.S. Computer Engineering</strong><br>
+          UC Santa Cruz, 2026–2027 (planned)
+        </p>
+      </section>
+
+      <!-- Coursework card -->
+      <section class="about-card cv-card">
+        <h2>Relevant Coursework</h2>
+        <ul>
+          <li>CSE 225 – Introduction to ASIC Systems Design</li>
+          <li>CSE 222A/B – VLSI Digital/System-on-Chip Design</li>
+          <li>CSE 121 – Embedded System Design</li>
+          <li>CSE 127A/B – Chip Design Capstone I/II</li>
+          <li>ECE 103/L – Signals and Systems</li>
+        </ul>
+      </section>
+
+      <!-- Finished projects card -->
+      <section class="about-card cv-card">
+        <h2>Highlighted Projects</h2>
+        <ul>
+          <li>SOMARs – SUAS Team Captain / Vision Lead</li>
+          <li>MATE ROV – Integration & Enclosure Lead</li>
+          <li>Hardware Systems Collective – FPGA/ASIC CV Research</li>
+        </ul>
+        <p>See the <a href="projects.html">Projects</a> tab for full descriptions.</p>
+      </section>
+
+      <!-- Extra stuff card -->
+      <section class="about-card cv-card">
+        <h2>Other Things</h2>
+        <p>
+          This is where you can dump extra things you want on a CV page:
+          awards, publications, side projects, random flex, etc.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- LOCK OVERLAY (same as index / projects) -->
+  <div class="lock-overlay" id="lock-overlay">
+    <div class="lock-card">
+      <h1>anti-bot defense</h1>
+      <p>hello!</p>
+
+      <input
+        type="password"
+        id="lock-code"
+        class="lock-input"
+        placeholder="enter code"
+        autocomplete="off"
+      />
+      <button class="lock-button" id="lock-submit">let me in</button>
+      <div class="lock-error" id="lock-error"></div>
+
+      <div class="lock-hint">
+        hint: password
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SECRET_CODE = "password";               // same as index/projects
+    const ACCESS_KEY = "nappham-session-access";  // same session key
+
+    const overlay = document.getElementById("lock-overlay");
+    const lockInput = document.getElementById("lock-code");
+    const lockButton = document.getElementById("lock-submit");
+    const lockError = document.getElementById("lock-error");
+
+    function unlock() {
+      overlay.style.display = "none";
+      sessionStorage.setItem(ACCESS_KEY, "granted");
+    }
+
+    function tryUnlock() {
+      const value = lockInput.value.trim();
+      if (!value) {
+        lockError.textContent = "please enter the code.";
+        return;
+      }
+      if (value === SECRET_CODE) {
+        unlock();
+      } else {
+        lockError.textContent = "wrong code.";
+        lockInput.value = "";
+        lockInput.focus();
+      }
+    }
+
+    if (sessionStorage.getItem(ACCESS_KEY) === "granted") {
+      overlay.style.display = "none";
+    } else {
+      lockButton.addEventListener("click", tryUnlock);
+      lockInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          tryUnlock();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

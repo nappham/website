@@ -406,3 +406,24 @@ p {
   }
 }
 
+/* ========== CV Page ========== */
+.cv {
+  margin-top: 32px;
+  max-width: 720px;     /* narrow column like your screenshot */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cv-card ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.cv-card ul li {
+  margin-bottom: 6px;
+}
+
