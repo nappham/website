@@ -135,19 +135,26 @@ p {
   object-fit: cover;
   box-shadow: 0 0 32px rgba(80, 120, 255, 0.5);
 }
-
 /* ========== Projects Page ========== */
 .projects {
   margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;             /* space between project cards */
 }
 
-/* each project row: text on left, logo on right */
+/* each project = one card with text left, logo right */
 .project-item {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 40px;
-  margin-bottom: 40px;
+
+  background: #090b12;
+  border-radius: 16px;
+  border: 1px solid rgba(80, 120, 255, 0.35);
+  box-shadow: 0 0 18px rgba(80, 120, 255, 0.25);
+  padding: 18px 20px 20px;
 }
 
 .project-text {
@@ -155,7 +162,10 @@ p {
   max-width: 560px;
 }
 
-/* right-side logo/image */
+.project-text h2 {
+  margin-bottom: 8px;
+}
+
 .project-logo {
   flex: 0 0 180px;
 }
@@ -165,10 +175,32 @@ p {
   height: auto;
   object-fit: contain;
   border-radius: 16px;
-  background: #090b12;
+  background: #05060a;
   padding: 10px;
   box-shadow: 0 0 26px rgba(80, 120, 255, 0.45);
 }
+
+/* mobile: stack text + logo vertically */
+@media (max-width: 700px) {
+  .project-item {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .project-text {
+    max-width: 100%;
+  }
+
+  .project-logo {
+    flex: 0 0 auto;
+    width: 140px;
+  }
+
+  .project-logo img {
+    width: 100%;
+  }
+}
+
 
 /* ========== Blog Page (collapsible tabs) ========== */
 .blog {
