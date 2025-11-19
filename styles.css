@@ -167,12 +167,13 @@ p {
 }
 
 .project-logo {
-  flex: 0 0 180px;
+  flex: 0 0 200px;         /* you can bump this a bit too if you want */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;               /* space between the two images */
+  gap: 24px;               /* was 12px – more space between the two logos */
 }
+
 
 .project-logo img {
   width: 100%;
