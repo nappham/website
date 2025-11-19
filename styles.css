@@ -105,16 +105,24 @@ p {
   margin-top: 32px;
 }
 
-.about-text {
+/* left side: a vertical stack of cards */
+.about-main {
   flex: 1;
   max-width: 560px;
-
-  background: #090b12;                               /* card background */
-  border-radius: 16px;                               /* rounded corners */
-  border: 1px solid rgba(80, 120, 255, 0.35);        /* subtle border */
-  box-shadow: 0 0 18px rgba(80, 120, 255, 0.25);     /* glow like your other cards */
-  padding: 18px 20px 20px;                           /* space inside the card */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* space between cards */
 }
+
+/* individual card (About Me, Class Schedule, etc.) */
+.about-card {
+  background: #090b12;
+  border-radius: 16px;
+  border: 1px solid rgba(80, 120, 255, 0.35);
+  box-shadow: 0 0 18px rgba(80, 120, 255, 0.25);
+  padding: 18px 20px 20px;
+}
+
 .about-photo {
   flex: 0 0 280px;       /* fixed column for your photo */
 }
